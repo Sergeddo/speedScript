@@ -37,8 +37,9 @@ def speed(tension, frequency, mass, impedance):
     if(V==0 or f==0 or m==0 or Z==0):
         pass
     else:
-        ν=V/sqrt(f*m*Z)
-        return(ν, V, f, m, Z)
+        ν_M=V/sqrt(f*m*Z)
+        ν=ν_M/sqrt(2)
+        return(ν_M, ν, V, f, m, Z)
 
 def deltaSpeed(dTension, dFrequency, dMass, dImpedance):
     #for speedControlUnit
