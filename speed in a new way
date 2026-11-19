@@ -37,9 +37,9 @@ def speed(tension, frequency, mass, impedance):
     if(V==0 or f==0 or m==0 or Z==0):
         pass
     else:
-        ν_M=V/sqrt(f*m*Z)
-        ν=ν_M/sqrt(2)
-        return(ν_M, ν, V, f, m, Z)
+        w_M=V/sqrt(f*m*Z)
+        w=w_M/sqrt(2)
+        return(w_M, w, V, f, m, Z)
 
 def deltaSpeed(dTension, dFrequency, dMass, dImpedance):
     #for speedControlUnit
@@ -50,8 +50,8 @@ def deltaSpeed(dTension, dFrequency, dMass, dImpedance):
         df=dFrequency
         dm=dMass
         dZ=dImpedance
-        dν=dV/sqrt(df*dm*dZ)
-        return(dν)
+        dw=dV/sqrt(df*dm*dZ)
+        return(dw)
 
 def speedDivergence(V, f, m, Z):
     #for nominalSpeedControlUnit
@@ -62,53 +62,53 @@ def speedDivergence(V, f, m, Z):
         pdf=-V/(2*f*sqrt(f*m*Z))
         pdm=-V/(2*m*sqrt(f*m*Z))
         pdZ=-V/(2*Z*sqrt(f*m*Z))
-        divergenceν=pdV+pdf+pdm+pdZ
-        return(divergenceν)
+        divergencew=pdV+pdf+pdm+pdZ
+        return(divergencew)
 
-def tensionDivergence(ν, f, m, Z):
+def tensionDivergence(w, f, m, Z):
     #for nominalTensionControlUnit
-    if(ν==0 or f==0 or m==0 or Z==0):
+    if(w==0 or f==0 or m==0 or Z==0):
         pass
     else:
         pdν=sqrt(f*m*Z)
-        pdf=(ν*sqrt(m*Z))/(2*sqrt(f))
-        pdm=(ν*sqrt(f*Z))/(2*sqrt(m))
-        pdZ=(ν*sqrt(f*m))/(2*sqrt(Z))
-        divergenceV=pdν+pdf+pdm+pdZ
+        pdf=(w*sqrt(m*Z))/(2*sqrt(f))
+        pdm=(w*sqrt(f*Z))/(2*sqrt(m))
+        pdZ=(w*sqrt(f*m))/(2*sqrt(Z))
+        divergenceV=pdw+pdf+pdm+pdZ
         return(divergenceV)
 
-def frequencyDivergence(ν, V, m, Z):
+def frequencyDivergence(w, V, m, Z):
     #for nominalFrequencyControlUnit
-    if(ν==0 or V==0 or m==0 or Z==0):
+    if(w==0 or V==0 or m==0 or Z==0):
         pass
     else:
-        pdV=(2*V)/(m*Z*ν**2)
-        pdm=-(V**2)/(m**2*Z*ν**2)
-        pdZ=-(V**2)/(m*Z**2*ν**2)
-        gdν=-(2*V**2)/(m*Z*ν**3)
-        divergencef=pdV+pdm+pdZ+gdν
+        pdV=(2*V)/(m*Z*w**2)
+        pdm=-(V**2)/(m**2*Z*w**2)
+        pdZ=-(V**2)/(m*Z**2*w**2)
+        gdν=-(2*V**2)/(m*Z*w**3)
+        divergencef=pdV+pdm+pdZ+gdw
         return(divergencef)
 
-def massDivergence(ν, V, f, Z):
+def massDivergence(w, V, f, Z):
     #for nominalMassControlUnit
     if(ν==0 or V==0 or f==0 or Z==0):
         pass
     else:
-        pdV=(2*V)/(f*Z*ν**2)
-        pdf=-(V**2)/(f**2*Z*ν**2)
-        pdZ=-(V**2)/(f*Z**2*ν**2)
-        gdν=-(2*V**2)/(f*Z*ν**3)
-        divergencem=pdV+pdf+pdZ+gdν
+        pdV=(2*V)/(f*Z*w**2)
+        pdf=-(V**2)/(f**2*Z*w**2)
+        pdZ=-(V**2)/(f*Z**2*w**2)
+        gdν=-(2*V**2)/(f*Z*w**3)
+        divergencem=pdV+pdf+pdZ+gdw
         return(divergencem)
 
-def impedanceDivergence(ν, V, f, m):
+def impedanceDivergence(w, V, f, m):
     #for nominalImpedanceControlUnit
-    if(ν==0 or V==0 or f==0 or m==0):
+    if(w==0 or V==0 or f==0 or m==0):
         pass
     else:
-        pdV=(2*V)/(f*m*ν**2)
-        pdf=-(V**2)/(f**2*m*ν**2)
-        pdm=-(V**2)/(f*m**2*ν**2)
-        gdν=-(2*V**2)/(f*m*ν**3)
-        divergenceZ=pdV+pdm+pdf+gdν
+        pdV=(2*V)/(f*m*w**2)
+        pdf=-(V**2)/(f**2*m*w**2)
+        pdm=-(V**2)/(f*m**2*w**2)
+        gdν=-(2*V**2)/(f*m*w**3)
+        divergenceZ=pdV+pdm+pdf+gdw
         return(divergenceZ)
