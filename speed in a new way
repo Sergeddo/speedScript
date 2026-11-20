@@ -6,10 +6,10 @@ from math import sqrt
 
 class Wave():
     def tension(tension1, tension2):
-    #for tensionControlUnit
-    dTension=tension2-tension1
-    tension=tension2
-    return(dTension, tension)
+        #for tensionControlUnit
+        dTension=tension2-tension1
+        tension=tension2
+        return(dTension, tension)
 
     def frequency(frequency1, frequency2):
         #for frequencyControlUnit
