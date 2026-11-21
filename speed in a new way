@@ -5,44 +5,74 @@
 from math import sqrt
 
 class Wave():
-    def tension(tension1, tension2):
-        #for tensionControlUnit
-        dTension=tension2-tension1
-        tension=tension2
-        return(dTension, tension)
 
-    def frequency(frequency1, frequency2):
-        #for frequencyControlUnit
-        dFrequency=frequency2-frequency1
-        frequency=frequency2
-        return(dFrequency, frequency)
+    def __init__(self, V_0, f_0, m_0, Z_0, V, f, m, Z):
+        self.tension_0=V_0
+        self.frequency_0=f_0
+        self.mass_0=m_0
+        self.impedance_0=Z_0
+        self.tension=V
+        self.frequency=f
+        self.mass=m
+        self.impedance=Z
 
-    def mass(mass1, mass2):
-        #for massControlUnit
-        dMass=mass2-mass1
-        mass=mass2
-        return(dMass, mass)
-
-    def impedance(impedance1, impedance2):
-        #for impedanceControlUnit
-        dImpedance=impedance2-impedance1
-        impedance=impedance2
-        return(dImpedance, impedance)
-
-    def speed(tension, frequency, mass, impedance):
+    def max_speed_0(self):
         #for speedControlUnit
-        V=tension
-        f=frequency
-        m=mass
-        Z=impedance
-        if(V==0 or f==0 or m==0 or Z==0):
+        if(self.tension_0==0 or self.frequency_0==0 or self.mass_0==0 or self.impedance_0==0):
             pass
         else:
-            w_M=V/sqrt(f*m*Z)
-            w=w_M/sqrt(2)
-            return(w_M, w, V, f, m, Z)
+            max_speed_0=self.tension_0/sqrt(self.frequency_0*self.mass_0*self.impedance_0)
+            return(max_speed_0)
 
-    def deltaSpeed(dTension, dFrequency, dMass, dImpedance):
+    def nominal_speed_0(self):
+        #for speedControlUnit
+        if(self.tension_0==0 or self.frequency_0==0 or self.mass_0==0 or self.impedance_0==0):
+            pass
+        else:
+            mominal_speed_0=self.tension_0/sqrt(2*self.frequency_0*self.mass_0*self.impedance_0)
+            return(nominal_speed_0)
+
+    def max_speed(self):
+        #for speedControlUnit
+        if(self.tension==0 or self.frequency==0 or self.mass==0 or self.impedance==0):
+            pass
+        else:
+            max_speed=self.tension/sqrt(self.frequency*self.mass*self.impedance)
+            return(max_speed)
+
+    def nominal_speed(self):
+        #for speedControlUnit
+        if(self.tension==0 or self.frequency==0 or self.mass_0==0 or self.impedance_0==0):
+            pass
+        else:
+            mominal_speed_0=self.tension/sqrt(2*self.frequency*self.mass*self.impedance)
+            return(nominal_speed)
+"""    
+    def dV(self):
+        #for tensionControlUnit
+        dTension=tension1-tension0
+        tension=tension1
+        return(dTension, tension)
+
+    def df(frequency0, frequency1):
+        #for frequencyControlUnit
+        dFrequency=frequency1-frequency0
+        frequency=frequency1
+        return(dFrequency, frequency)
+
+    def dm(mass0, mass1):
+        #for massControlUnit
+        dMass=mass1-mass0
+        mass=mass1
+        return(dMass, mass)
+
+    def dZ(impedance0, impedance1):
+        #for impedanceControlUnit
+        dImpedance=impedance1-impedance0
+        impedance=impedance1
+        return(dImpedance, impedance)
+
+    def delta_speed(dTension, dFrequency, dMass, dImpedance):
         #for speedControlUnit
         if(dTension==0 or dFrequency==0 or dMass==0 or dImpedance==0):
             pass
@@ -113,3 +143,4 @@ class Wave():
             pdw=-(2*V**2)/(f*m*w**3)
             divergenceZ=pdV+pdm+pdf+pdw
             return(divergenceZ)
+"""
