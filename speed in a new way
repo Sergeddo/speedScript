@@ -42,7 +42,7 @@ class Wave():
 
     def nominal_speed(self):
         #for speedControlUnit
-        if(self.tension==0 or self.frequency==0 or self.mass_0==0 or self.impedance_0==0):
+        if(self.tension==0 or self.frequency==0 or self.mass==0 or self.impedance==0):
             pass
         else:
             mominal_speed_0=self.tension/sqrt(2*self.frequency*self.mass*self.impedance)
@@ -143,4 +143,5 @@ class Wave():
             pdw=-(2*V**2)/(f*m*w**3)
             divergenceZ=pdV+pdm+pdf+pdw
             return(divergenceZ)
+
 """
