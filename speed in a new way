@@ -45,7 +45,7 @@ class Wave():
         if(self.tension==0 or self.frequency==0 or self.mass==0 or self.impedance==0):
             pass
         else:
-            mominal_speed=self.tension/sqrt(2*self.frequency*self.mass*self.impedance)
+            nominal_speed=self.tension/sqrt(2*self.frequency*self.mass*self.impedance)
             return(nominal_speed)
 """    
     def dV(self):
